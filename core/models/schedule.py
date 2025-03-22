@@ -15,9 +15,9 @@ class Schedule(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     med_name = Column(String(100), nullable=False)
     frequency = Column(Integer, nullable=False) # Количество раз в день
-    duration = Column(Integer, nullable=True) # None для постоянного приема
-    user_id = Column(Integer)
-    created_at = Column(DateTime, default=datetime.now)
+    duration = Column(Integer, nullable=True) # Дни, None для постоянного приема
+    user_id = Column(Integer, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
 
     def __str__(self):
-        return f'Schedule #{self.id}, medicine: {self.med_name}, user: {self.user_id}'
+        return f'Расписание № {self.id}, лекарство: {self.med_name}, пользователь: {self.user_id}'
